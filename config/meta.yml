@@ -1,0 +1,5 @@
+meta_product_name: "Sammi"
+meta_title: "Sammi- Supporting teachers, supporting students"
+meta_description: "Sammi is an app that supports teachers to support their students' emotional and social development. It helps teachers to gain an understanding of how all their students are feeling to inform their teaching and generate important conversations around welbeing"
+meta_image: "cover.jpeg" # should exist in `app/assets/images/`
+# twitter_account: "@product_twitter_account"   # required for Twitter Cards
