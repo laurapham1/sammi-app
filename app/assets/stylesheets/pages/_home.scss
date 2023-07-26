@@ -1,0 +1,20 @@
+// Specific CSS for your home-page
+/* Fonts */
+/* Fontawesome */
+@import url('https://use.fontawesome.com/releases/v5.6.3/css/all.css');
+
+/*Components css */
+@import url("components/banner.css");
+@import url("components/cards.css");
+
+/* Utilities */
+body {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Custom design below! */
+

@@ -1,0 +1,157 @@
+
+.card-subjects {
+  overflow: hidden;
+  height: 140px;
+  background: white;
+  display: flex;
+  align-items: center;
+  margin-bottom:25px;
+  border-radius:10px;
+}
+
+.progress-bar #emotion-pro{
+  font-size:1px;
+}
+
+.progress-bar:hover{
+  #emotion-pro{
+    transform: scale(80)
+  }
+}
+
+.card-subjects img {
+  height: 100%;
+  width: 140px;
+  object-fit: cover;
+}
+
+.card-subjects h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-subjects p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-subjects .card-subjects-infos {
+  padding: 20px;
+  flex: 1 1 auto;
+}
+
+.card-subjects #emotion{
+  font-size:30px;
+}
+.card-category {
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+  object-fit: cover;
+  margin:20px 0;
+  position:relative;
+}
+
+.card-category-new {
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+  border-radius: 5px;
+  object-fit: cover;
+  margin:20px 0;
+  position:relative;
+}
+
+.card-category-new #emotion{
+  position:absolute;
+  left: 0;
+  transform: translate(-50%, -100%);
+
+}
+.card-container{
+  border-radius: 10px;
+  text-align:center;
+  background-color:white;
+}
+
+.card-subject-title{
+  overflow: hidden;
+  height: 150px;
+  background-color: rgba(255, 140, 153, 0);
+  display: flex;
+  align-items: center;
+  border-radius: 16px;
+  margin-top:10px;
+  color: white;
+  margin-bottom: 20px;
+  width:100%;
+  text-align: center;
+}
+
+.card-status{
+  overflow: hidden;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  border-radius: 16px;
+  margin-top:10px;
+  border: 1px, solid black;
+  color: #FF626F;
+  margin-bottom: 20px;
+  width:100%;
+}
+.card-product {
+  overflow: hidden;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  border-radius: 16px;
+
+}
+
+.card-product .avatar-large{
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+}
+.card-product h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-product p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+}
+
+.emoji-block{
+  display: flex;
+  align-items: center;
+  padding: 25px;
+  background-color: white;
+  border-radius: 0px 16px 16px 0px;
+  height:100%;
+}
+
+
+

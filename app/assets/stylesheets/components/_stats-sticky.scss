@@ -1,0 +1,23 @@
+.stats-container{
+  top: 3%;
+  position: sticky;
+}
+.stats-sticky{
+width: 100%;
+display: flex;
+border-radius: 10px;
+background-color: white;
+padding:15px;
+justify-content: center;
+text-align:center;
+}
+
+.status-sticky{
+width: 100%;
+display: flex;
+border-radius: 0 0 15px 15px;
+background-color: white;
+padding:15px;;
+text-align:center;
+justify-content: center;
+}

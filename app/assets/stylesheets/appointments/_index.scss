@@ -1,0 +1,40 @@
+.appointment-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 20px 0px;
+  align-items: center;
+}
+
+#new_appointment:active {
+  padding-bottom: 13px !important;
+}
+
+.appointment-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dropdown-menu-right {
+  text-align: center;
+  border-radius: 5px;
+}
+
+.dropdown-menu-right a {
+  color: rgba(51, 53, 51, 0.5);
+}
+
+.dropdown-menu-right a:hover {
+  color: #FF6874;
+}
+
+.appointment-cancel {
+  text-align: right;
+}
+
+.card-body-appointment {
+  margin: 0 0 0 auto;
+  width: 25%;
+  border-radius: 10px;
+  padding-bottom: 15px !important;
+}
