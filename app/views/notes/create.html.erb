@@ -1,0 +1,16 @@
+function refreshForm(innerHTML) {
+  const newNoteForm = document.getElementById('new_note');
+  newNoteForm.innerHTML = innerHTML;
+}
+
+function addNote(noteHTML) {
+  const notes = document.getElementById('notes-container');
+  notes.insertAdjacentHTML('beforeend', noteHTML);
+}
+
+<% if @note.errors.any? %>
+  refreshForm(' <%= j render "shared/note_form", student: @student, note: @note, subject: @subject %>');
+<% else %>
+  addNote('<%= j render "shared/notes", note: @note %>');
+  refreshForm(' <%= j render "shared/note_form", student: @student, note: Note.new, subject: @subject %>');
+<% end %>

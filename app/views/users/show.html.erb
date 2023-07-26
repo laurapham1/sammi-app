@@ -1,0 +1,151 @@
+<!-- every page is already in a container from application.html.erb -->
+<div class="row nomarg">
+  <h1 style='margin-left: 6%; margin-bottom:0'><%= @student.first_name %> <%= @student.last_name %></h1>
+</div>
+
+<div class="top", style="background-color: <% @student.daily_emotions.last.emotion.color %>">
+  <%= image_tag asset_path(@student.photo), class: 'avatar' %>
+
+  <div class="row nomarg">
+    <div class="col-6 header">
+      <h2 class="user-show-header">How is <%= @student.first_name %> feeling today?</h2>
+      <p>Last check-in from Jamie was at <%= @student.daily_emotions.first.created_at.strftime("%I:%M %p on %a, %d %B, %Y") %> </p>
+      <button class="btn btn-sammi appointment" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        Create an appointment
+      </button>
+      <div class="collapse" id="collapseExample" style="margin-bottom: 15px;">
+        <div class="card card-body ml-0" style="border-radius: 15px; padding-bottom: 13px;">
+          <%= render 'shared/appointments_form' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 emotion">
+      <%= @student.daily_emotions.first.emotion.rating %>
+    </div>
+  </div>
+</div>
+
+<% if @student.daily_emotions.count > 2 %>
+  <div class="row nomarg analytics">
+    <div class="col-5 weekly-status">
+      <div class="week">
+        <h3><%= @student.first_name %>'s week so far:</h3>
+
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class='week-bars'>
+                <div class="collection">
+
+                  <div class="time-title">
+                    <h4>Mon</h4>
+                    <p>8:45 am</p>
+                  </div>
+
+                  <!-- <div class="bar3"> -->
+                    <div class="bar" style="width: 100px; height: 15px; background-color: #E2E2E2;">
+                      <div class="bar2" style="width: <%= @student.daily_emotions.fifth.emotion.number.to_f / 5 * 100 %>px; height: 15px; background-color: #F7D167;"></div>
+                    </div>
+                    <span class="today-emoticon"><%= @student.daily_emotions.fifth.emotion.rating %></span>
+                  <!-- </div> -->
+                </div>
+                <div class="collection">
+                  <div class="time-title">
+                    <h4>Tue</h4>
+                    <p>8:45 am</p>
+                  </div>
+
+                  <!-- <div class="bar3"> -->
+                    <div class="bar" style="width: 100px; height: 15px; background-color: #E2E2E2;">
+                      <div class="bar2" style="width: <%= @student.daily_emotions.fourth.emotion.number.to_f / 5 * 100 %>px; height: 15px; background-color: #F7D167;"></div>
+                    </div>
+                    <span class="today-emoticon"><%= @student.daily_emotions.fourth.emotion.rating %></span>
+                <!-- </div> -->
+                </div>
+                <div class="collection">
+                  <div class="time-title">
+                    <h4>Wed</h4>
+                    <p>8:45 am</p>
+                  </div>
+
+                  <!-- <div class="bar3"> -->
+                    <div class="bar" style="width: 100px; height: 15px; background-color: #E2E2E2;">
+                      <div class="bar2" style="width: <%= @student.daily_emotions.third.emotion.number.to_f / 5 * 100 %>px; height: 15px; background-color: #F7D167;"></div>
+                    </div>
+                    <span class="today-emoticon"><%= @student.daily_emotions.third.emotion.rating %></span>
+                  <!-- </div> -->
+                </div>
+                <div class="collection">
+                  <div class="time-title">
+                    <h4>Thu</h4>
+                    <p>8:45 am</p>
+                  </div>
+
+                  <!-- <div class="bar3"> -->
+                    <div class="bar" style="width: 100px; height: 15px; background-color: #E2E2E2;">
+                      <div class="bar2" style="width: <%= @student.daily_emotions.second.emotion.number.to_f / 5 * 100 %>px; height: 15px; background-color: #F7D167;"></div>
+                    </div>
+                    <span class="today-emoticon"><%= @student.daily_emotions.second.emotion.rating %></span>
+                  <!-- </div> -->
+                </div>
+                <div class="collection">
+                  <div class="time-title">
+                    <h4>Fri</h4>
+                    <p>8:45 am</p>
+                  </div>
+
+                  <!-- <div class="bar3"> -->
+                    <div class="bar" style="width: 100px; height: 15px; background-color: #E2E2E2;">
+                      <div class="bar2" style="width: <%= @student.daily_emotions.first.emotion.number.to_f / 5 * 100 %>px; height: 15px; background-color: #F7D167;"></div>
+                    </div>
+                    <span class="today-emoticon"><%= @student.daily_emotions.first.emotion.rating %></span>
+                  <!-- </div> -->
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="chart-container emo-chart" style="position: relative;">
+                <span style="position: absolute; left: 28px; top: 211px;"><%= Emotion.all.first.rating %></span>
+                <span style="position: absolute; left: 28px; top: 168px;"><%= Emotion.all.second.rating %></span>
+                <span style="position: absolute; left: 28px; top: 127px;"><%= Emotion.all.third.rating %></span>
+                <span style="position: absolute; left: 28px; top: 83px;"><%= Emotion.all.fourth.rating %></span>
+                <span style="position: absolute; left: 28px; top: 40px;"><%= Emotion.all.fifth.rating %></span>
+                <%= line_chart @dailynumber, label: "Emotion", xtitle: "Date", ytitle: "Emotions", points: true, xmin: "2019-12-02", xmax: "2019-12-06", min: 0, max: 5, id: 'chartkick', curve: true, discrete: false, colors: ['#F7D167'] %>
+              </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <i class="fas fa-bars iconz"></i>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <i class="fas fa-chart-line iconz"></i>
+          </a>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-7 monthly-status">
+      <div class="month">
+        <div>
+          <h3><%= @student.first_name %>'s month:</h3>
+        </div>
+        <div id="events_calendar">
+          <%= render partial: "calendar", locals: {events: @events} %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="chat-wrapper">
+  <div class="notes-wrapper" id="notes-container">
+  <% @student.student_note_relationships.each do |note| %>
+    <%= render 'shared/notes', note: note %>
+  <% end %>
+  </div>
+ <%= render 'shared/note_form', student: @student, note: @note, subject: @subject %>
+</div>
+
+<% end %>

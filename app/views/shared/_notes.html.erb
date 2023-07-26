@@ -1,0 +1,9 @@
+<div class="chat-note">
+  <div class="note-teacher">
+    <%= image_tag note.teacher.photo, class: "avatar" %>
+  </div>
+  <div class="chatz">
+    <p class="chat-note-message"><%= note.content %></p>
+    <div class="chat-note-time"><%= note.created_at.strftime("%A, %d %b %Y %l:%M %p") %> | <%= note.teacher.subjects.first&.name %></div>
+  </div>
+</div>

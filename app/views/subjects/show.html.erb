@@ -1,0 +1,95 @@
+
+<div class='subject-banner' style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('<%= asset_path(@subject.photo) %>');">
+
+  <div class="container d-flex banner-text m-auto">
+    <div class='col-6 mt-2'>
+      <h1><%= @subject.name %></h1>
+      <p><%= @subject.class_members.length %> students registered in this class</p>
+    </div>
+    <div class='col-6 d-flex' style='justify-content: flex-end;'>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-sammi">Add Student</button>
+    </div>
+  </div>
+
+</div>
+<div class='container p-0'>
+<% if @subject.class_members.length > 0 %>
+<!-- This will be a bar showing the proportion for the entire class once we agree on a color scheme -->
+<div class='class-progress'>
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" style="background-color: <%= Emotion.first.color %>;width: <%= @emo_prop[Emotion.first.number] %>%" aria-valuenow="<%= @emo_prop[Emotion.first.number] %>" aria-valuemin="0" aria-valuemax="100" data-toggle='tooltip' data-placement="top" title="<%= Emotion.first.rating %>"></div>
+    <div class="progress-bar" role="progressbar" style="background-color: <%= Emotion.second.color %>; width: <%= @emo_prop[Emotion.second.number] %>%" aria-valuenow="<%= @emo_prop[Emotion.second.number] %>" aria-valuemin="0" aria-valuemax="100" data-toggle='tooltip' data-placement="top" title="<%= Emotion.second.rating %>"></div>
+    <div class="progress-bar" role="progressbar" style="background-color: <%= Emotion.third.color %>; width: <%= @emo_prop[Emotion.third.number] %>%" aria-valuenow="<%= @emo_prop[Emotion.third.number] %>" aria-valuemin="0" aria-valuemax="100" data-toggle='tooltip' data-placement="top" title="<%= Emotion.third.rating %>"></div>
+    <div class="progress-bar" role="progressbar" style="background-color: <%= Emotion.fourth.color %>; width: <%= @emo_prop[Emotion.fourth.number] %>%" aria-valuenow="<%= @emo_prop[Emotion.fourth.number] %>" aria-valuemin="0" aria-valuemax="100" data-toggle='tooltip' data-placement="top" title="<%= Emotion.fourth.rating %>"></div>
+    <div class="progress-bar" role="progressbar" style="background-color: <%= Emotion.fifth.color %>; width: <%= @emo_prop[Emotion.fifth.number] %>%" aria-valuenow="<%= @emo_prop[Emotion.fifth.number] %>" aria-valuemin="0" aria-valuemax="100" data-toggle='tooltip' data-placement="top" title="<%= Emotion.fifth.rating %>"></div>
+  </div>
+</div>
+<div class="student-index">
+  <div class='row'>
+    <div class='col-12 col-md-9'>
+      <div class='row'>
+        <% @subject.class_members.each do |member| %>
+          <div class='col-12 col-md-12 col-lg-6'>
+          <%= link_to subject_user_path(@subject, member) do %>
+            <div class='card-container mb-4' <%#= member.daily_emotions.first.emotion.color %>>
+              <div class='row'>
+                <div class='col-4 pr-0'>
+                  <div class="card-product">
+                    <%= image_tag asset_path(member.photo), class: "avatar-large m-auto", alt: "avatar-large" %>
+                  </div>
+                </div>
+                <div class='col-4 justify-content-center'>
+                  <h2 style='padding-top:25%; font-size:16px'><%= member.first_name %> <%= member.last_name %></h2>
+                  <p style='font-size:11px'>Last Updated Today at 08:1<%= rand(1..9) %></p>
+                </div>
+                <div class='col-4 pl-0'>
+                  <div class="card-product d-flex">
+                    <p id="emotion"><%= member.daily_emotions.first.emotion.rating %></p>
+                    <% if member.daily_emotions.first.emotion.number > member.daily_emotions.second.emotion.number %>
+                      <i class="fas fa-arrow-up"></i>
+                      <% elsif member.daily_emotions.first.emotion.number < member.daily_emotions.second.emotion.number %>
+                      <i class="fas fa-arrow-down"></i>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <div class='col-3'>
+      <div class='stats-container'>
+        <div class='stats-sticky d-none d-md-block'>
+          <div class='row d-flex mb-0' style='justify-content:center;padding:10px;'>
+            <h2>Mood Overview</h2>
+          </div>
+          <br>
+          <div class='row d-flex'style='align-items:center'>
+          <% Emotion.all.each do|emo| %>
+            <div class='col-6 mb-2'>
+              <h2 style='margin-bottom: 0;text-align: center;'><%= emo.rating %></h2>
+            </div>
+            <div class='col-6 p-0 mb-2'>
+              <div class="bar" style="width:<%= @emo_prop[emo.number] %>%; height: 15px; background-color: <%= emo.color %>;"></div>
+            </div>
+          <% end %>
+          </div>
+          <br>
+          <div class='row d-flex mb-0' style='justify-content:center;'>
+            <h2>Average</h2>
+          </div>
+          <div class='row d-flex mb-0' style='justify-content:center;'>
+            <p id='emotion'><%= Emotion.find(@emo_average.round).rating%></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+
+

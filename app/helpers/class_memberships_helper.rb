@@ -1,0 +1,2 @@
+module ClassMembershipsHelper
+end

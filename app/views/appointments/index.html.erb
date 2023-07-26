@@ -1,0 +1,103 @@
+
+<div class="row mt-4 mb-3">
+  <div class="col-6 p-0">
+    <h1>Your Appointments</h1>
+  </div>
+  <div class="col-6">
+    <%= link_to 'Make an appointment', subjects_path, class: 'btn btn-ghost float-right d-none d-md-block'%>
+  </div>
+</div>
+
+<div class="row border-bottom">
+  <h2>Pending:</h2>
+</div>
+
+<% @pending_appointments.order(:date).each do |appointment| %>
+  <div class="row appointment-card">
+    <div class="col-3">
+      <div class="row">
+        <div class="col-sm-12 col-lg-3">
+          <%= image_tag asset_path(appointment.student.photo), class: "avatar m-auto", alt: "avatar" %>
+        </div>
+        <div class="col-sm-12 col-lg-9 d-flex align-items-center">
+          <h5 class="m-0"><%= appointment.student.first_name %> <%= appointment.student.last_name.first %>.</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-3">
+       <p class="m-0"><%= appointment.date.strftime("%a, %d %B, %Y") %> </p>
+    </div>
+    <div class="col-1">
+      <p class="m-0"><%= appointment.date.strftime("%H:%M") %> </p>
+    </div>
+    <div class="col-4 appointment-buttons d-none d-md-block">
+      <div class="row">
+        <% if current_user.teacher %>
+          <div class="col-6">
+            <%= link_to 'Completed', appointment_path(appointment, appointment: { completed: true }), method: :patch, class: 'btn btn-sammi' %>
+          </div>
+          <div class="reschedule-button col-6">
+            <button class="btn btn-ghost" type="button" data-toggle="collapse" data-target="#collapse-<%= appointment.student_id %>" aria-expanded="false" aria-controls="collapse-<%= appointment.student_id %>">
+              Reschedule
+            </button>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-1 appointment-cancel">
+      <%= link_to appointment_path(appointment), method: :delete, data: { confirm: "Are you sure?" } do %>
+        <i class='fas fa-times'></i>
+      <% end %>
+    </div>
+  </div>
+  <div class="collapse" id="collapse-<%= appointment.student_id %>">
+    <div class="card card-body card-body-appointment">
+      <div class="container">
+        <div class="row justify-center-center">
+          <div class="col-12">
+            <%= simple_form_for [appointment] do |f| %>
+              <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
+              <%= f.submit 'Submit', class: "btn btn-sammi"%>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<div class="row border-bottom">
+  <h2>Past:</h2>
+</div>
+
+<% @completed_appointments.order(:date).each do |appointment| %>
+  <div class="row appointment-card">
+    <div class="col-3">
+      <div class="row">
+        <div class="col-sm-12 col-lg-3">
+          <%= image_tag asset_path(appointment.student.photo), class: "avatar m-auto", alt: "avatar" %>
+        </div>
+        <div class="col-sm-12 col-lg-9 d-flex align-items-center">
+          <h5 class="m-0"><%= appointment.student.first_name %> <%= appointment.student.last_name.first %>.</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-3">
+       <p class="m-0"><%= appointment.date.strftime("%a, %d %B, %Y") %> </p>
+    </div>
+    <div class="col-1">
+      <p class="m-0"><%= appointment.date.strftime("%H:%M") %> </p>
+    </div>
+    <div class="col-4 appointment-buttons d-none d-md-block">
+      <div class="row">
+        <div class="col-10"></div>
+      </div>
+    </div>
+    <div class="col-1 appointment-cancel">
+      <%= link_to appointment_path(appointment), method: :delete, data: { confirm: "Are you sure?" } do %>
+        <i class='fas fa-times'></i>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
