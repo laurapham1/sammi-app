@@ -1,24 +1,5 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An app supporting teachers to support their students' social and emotional development. Built using Ruby on Rails, JS, AJAX and ActiveRecord
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![Sammi App Mockup](/app/assets/images/sammi-mockup.png)
