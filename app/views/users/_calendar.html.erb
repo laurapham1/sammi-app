@@ -1,0 +1,9 @@
+<div class="calendar-heading">
+  <div class="calendar">
+    <%= month_calendar do |date| %>
+      <span class="my-date"><%= date.day %></span>
+      <p class="daily-emotion" >
+        <%= @daily_emotions.where(created_at: date)&.first&.emotion&.rating %>
+      </p>
+    <% end %>
+  </div>
