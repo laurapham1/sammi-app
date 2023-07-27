@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_27_044814) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_27_054359) do
   create_table "appointments", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_27_044814) do
     t.boolean "completed"
     t.integer "student_id", null: false
     t.integer "teacher_id", null: false
+    t.index ["student_id", "teacher_id"], name: "index_appointments_on_student_id_and_teacher_id"
     t.index ["student_id"], name: "index_appointments_on_student_id"
     t.index ["teacher_id"], name: "index_appointments_on_teacher_id"
   end
@@ -53,6 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_27_044814) do
     t.string "content"
     t.integer "teacher_id", null: false
     t.integer "student_id", null: false
+    t.index ["student_id", "teacher_id"], name: "index_notes_on_student_id_and_teacher_id"
     t.index ["student_id"], name: "index_notes_on_student_id"
     t.index ["teacher_id"], name: "index_notes_on_teacher_id"
   end
