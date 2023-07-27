@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row justify-center-center">
     <div class="col-12">
-      <%= simple_form_for [@subject] do |f| %>
-        <%= f.input :name %>
-        <%= f.input :room %>
-        <%= f.input :photo %>
+      <%= form_with(model: @subject) do |f| %>
+        <%= f.text_field :name %>
+        <%= f.text_field :room %>
+        <%= f.text_field :photo %>
         <%= f.submit 'Submit', class: "btn btn-sammi"%>
       <% end %>
     </div>

@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row justify-center-center">
     <div class="col-12">
-      <%= simple_form_for [@subject, @student, @appointment] do |f| %>
-        <%= f.input :comment %>
-        <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
+      <%= form_with(model: [@subject, @student, @appointment]) do |f| %>
+        <%= f.text_field :comment %>
+        <%= f.text_field :date, as: :string, required: false, input_html: {class: "datepicker"} %>
         <%= f.submit 'Submit',class: "btn btn-sammi"%>
       <% end %>
     </div>
