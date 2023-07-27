@@ -29,8 +29,8 @@ class User < ApplicationRecord
          has_many :teacher_note_relationships, foreign_key: :teacher_id, class_name: 'Note'
          has_many :student_note_relationships, foreign_key: :student_id, class_name: 'Note'
        
-         scope :teachers, -> { where(teacher: true) }
-         scope :students, -> { where(teacher: false) }
+         scope :teachers, -> { where(role: 'teacher') }
+         scope :students, -> { where(role: 'student') }
        
          # used to check if child has already submitted an emotion
          def has_submitted_today?

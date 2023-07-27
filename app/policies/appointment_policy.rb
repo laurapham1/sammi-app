@@ -10,7 +10,7 @@ class AppointmentPolicy < ApplicationPolicy
   end
 
   def create?
-    user.teacher
+    user.role === 'teacher'
   end
 
   def update?

@@ -1,6 +1,6 @@
 class NotePolicy < ApplicationPolicy
   def create?
-    user&.teacher
+    user&.role === 'teacher'
   end
 
   def destroy?

@@ -10,7 +10,7 @@ class SubjectPolicy < ApplicationPolicy
   end
 
   def new?
-    record.user == user && user.teacher
+    record.user == user && user.role === 'teacher'
   end
 
   def create?

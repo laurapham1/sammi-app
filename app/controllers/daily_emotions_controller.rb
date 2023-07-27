@@ -6,7 +6,7 @@ class DailyEmotionsController < ApplicationController
     if @daily_emotion.save
       redirect_to root_path
     else
-      render "pages/home"
+      render "home#index"
     end
   end
 

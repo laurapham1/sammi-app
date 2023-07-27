@@ -1,6 +1,6 @@
 class AppointmentsController < ApplicationController
   def index
-    if current_user.teacher
+    if current_user.role === 'teacher'
       @completed_appointments = policy_scope(Appointment).where(teacher: current_user, completed: true)
       @pending_appointments = policy_scope(Appointment).where(teacher: current_user, completed: false)
     else
