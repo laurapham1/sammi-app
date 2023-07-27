@@ -32,7 +32,7 @@
     </div>
     <div class="col-4 appointment-buttons d-none d-md-block">
       <div class="row">
-        <% if current_user.teacher %>
+        <% if current_user.role === 'teacher' %>
           <div class="col-6">
             <%= link_to 'Completed', appointment_path(appointment, appointment: { completed: true }), method: :patch, class: 'btn btn-sammi' %>
           </div>
@@ -55,8 +55,8 @@
       <div class="container">
         <div class="row justify-center-center">
           <div class="col-12">
-            <%= simple_form_for [appointment] do |f| %>
-              <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
+            <%= form_with(model: appointment) do |f| %>
+              <%= f.textfield :date, as: :string, required: false, input_html: {class: "datepicker"} %>
               <%= f.submit 'Submit', class: "btn btn-sammi"%>
             <% end %>
           </div>
